@@ -22,16 +22,11 @@ from users import views
 
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
-
-
-router = routers.SimpleRouter()
-
-router.register('users', views.UserViewset, basename='users')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
-    path('get-users/', views.get_users, name='get_users'),
+    path('home/', views.home),
+    path('users/', views.UserListView.as_view(), name='get_users'),
+    path('visit-count/', views.VisitCountView.as_view(), name='visit-count')
 ]
