@@ -6,3 +6,7 @@ class User(models.Model):
     email = models.EmailField()
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
+
+
+class Visit(models.Model):
+    count = models.IntegerField()
