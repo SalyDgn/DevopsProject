@@ -67,4 +67,4 @@ class VisitTests(APITestCase):
 
         visit.refresh_from_db()
         visits = Visit.objects.all()
-        self.assertLess(len(visits), 2)
+        self.assertEqual(len(visits), 1)
