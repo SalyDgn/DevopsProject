@@ -21,11 +21,10 @@ def home(request):
         visit = Visit.objects.first()
         visit.count += 1
         visit.save()
-    return render(request, 'home.html')
+    return render(request, "home.html")
 
 
 class UserListView(APIView):
-
     def get(self, request):
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
