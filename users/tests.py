@@ -1,11 +1,9 @@
-from django.test import TestCase
-
 # Create your tests here.
 from django.urls import reverse
 from rest_framework import status
-from rest_framework.test import APITestCase, APIClient
+from rest_framework.test import APITestCase
 from .models import User, Visit
-from .serializers import UserSerializer, VisitSerializer
+from .serializers import UserSerializer
 
 
 class UserListViewTestCase(APITestCase):
