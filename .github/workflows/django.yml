@@ -78,7 +78,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
             context: .
-            file: ./
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/django:latest
         
