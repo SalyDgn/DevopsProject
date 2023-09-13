@@ -10,6 +10,18 @@ jobs:
   build-ci:
     runs-on: ubuntu-latest
 
+     services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER=postgres
+          POSTGRES_PASSWORD=postgres
+          POSTGRES_DB=postgres
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
     - uses: actions/checkout@v3
 
@@ -36,6 +48,15 @@ jobs:
       uses: chartboost/ruff-action@v1
       
     - name: Run Tests
+      env:
+        SECRET_KEY:'django-insecure-*b^1li0-z!xnsf_(j8r6$+-n4rb^yf--+syh##bumz9*dpuhao'
+        ALLOWED_HOSTS:*
+
+        POSTGRES_USER:postgres
+        POSTGRES_PASSWORD:postgres
+        POSTGRES_DB:postgres
+        POSTGRES_HOST:db
+        POSTGRES_PORT:5432
       run: |
         python manage.py test
 
