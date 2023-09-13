@@ -46,7 +46,7 @@ jobs:
           POSTGRES_DB: postgres
           POSTGRES_HOST: db
           POSTGRES_PORT: 5432
-          run: |
+        run: |
             python manage.py test
   
       - name: Login to Docker Hub
