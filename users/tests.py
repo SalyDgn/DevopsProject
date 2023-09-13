@@ -9,16 +9,22 @@ from .serializers import UserSerializer, VisitSerializer
 
 
 class UserListViewTestCase(APITestCase):
-
     def setUp(self):
-        User.objects.create(username="user1", email="user1@example.com",
-                            first_name='user1fn', last_name="user1ln")
-        User.objects.create(username="user2", email="user2@example.com",
-                            first_name='user1fn', last_name="user1ln")
+        User.objects.create(
+            username="user1",
+            email="user1@example.com",
+            first_name="user1fn",
+            last_name="user1ln",
+        )
+        User.objects.create(
+            username="user2",
+            email="user2@example.com",
+            first_name="user1fn",
+            last_name="user1ln",
+        )
 
     def test_get_user_list(self):
-
-        url = reverse('users')
+        url = reverse("users")
 
         response = self.client.get(url)
 
@@ -31,10 +37,8 @@ class UserListViewTestCase(APITestCase):
 
 
 class VisitTests(APITestCase):
-
     def test_get_visits_count(self):
-
-        response = self.client.get(reverse('visit-count'))
+        response = self.client.get(reverse("visit-count"))
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -44,7 +48,7 @@ class VisitTests(APITestCase):
         self.assertEqual(response.data, expected_data)
 
     def test_first_visit(self):
-        response = self.client.get(reverse('home'))
+        response = self.client.get(reverse("home"))
         self.assertEqual(response.status_code, 200)
 
         visit = Visit.objects.first()
@@ -53,7 +57,7 @@ class VisitTests(APITestCase):
     def test_increment_visit_count(self):
         visit = Visit.objects.create(count=5)
 
-        response = self.client.get(reverse('home'))
+        response = self.client.get(reverse("home"))
         self.assertEqual(response.status_code, 200)
 
         visit.refresh_from_db()
@@ -62,7 +66,7 @@ class VisitTests(APITestCase):
     def test_db_number_of_rows(self):
         visit = Visit.objects.create(count=5)
 
-        response = self.client.get(reverse('home'))
+        response = self.client.get(reverse("home"))
         self.assertEqual(response.status_code, 200)
 
         visit.refresh_from_db()

@@ -25,8 +25,8 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('users/', views.UserListView.as_view(), name='users'),
-    path('visits/', views.VisitCountView.as_view(), name='visit-count')
+    path("admin/", admin.site.urls),
+    path("", views.home, name="home"),
+    path("users/", views.UserListView.as_view(), name="users"),
+    path("visits/", views.VisitCountView.as_view(), name="visit-count"),
 ]
