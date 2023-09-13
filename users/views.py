@@ -1,13 +1,8 @@
-from django.views import View
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-from django.views.decorators.http import require_GET
 from .models import User, Visit
-from rest_framework import viewsets
 from .serializers import UserSerializer, VisitSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.conf import settings
 
 
 # Create your views here.
