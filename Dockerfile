@@ -17,10 +17,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 #Install project dependencies
-RUN pip3 install -r requirements.txt
-
-RUN python manage.py makemigrations && python manage.py migrate 
+RUN pip3 install -r requirements.txt 
 
 # Start the Django development server
-CMD python manage.py runserver 0.0.0.0:8000
-
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
