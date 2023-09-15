@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('users', '0003_visit'),
+        ("users", "0003_visit"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='visit',
-            name='count',
+            model_name="visit",
+            name="count",
             field=models.IntegerField(),
         ),
     ]
