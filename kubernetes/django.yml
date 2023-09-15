@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: django
-          image: salydgn/django-kub:latest   
+          image: salydgn/django:latest   
           ports:
             - containerPort: 8000
           env:
