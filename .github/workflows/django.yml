@@ -99,7 +99,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f app-configmap.yml,app-secret.yml
+          kubectl apply -f kubernetes/app-configmap.yml,kubernetes/app-secret.yml
           kubectl apply -f kubernetes/django.yml
           kubectl apply -f kubernetes/postgres.yml
 
