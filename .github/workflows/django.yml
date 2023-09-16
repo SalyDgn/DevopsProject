@@ -101,20 +101,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Check directory
-        run: ls 
         
       - name: Start minikube
         uses: medyagh/setup-minikube@master
       - name: Try the cluster !
         run: kubectl get pods -A
-     
+
+      - name: Check directory
+        run: ls 
   
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f ../kubernetes/postgres.yaml
-          kubectl apply -f ../kubernetes/django.yaml
+          kubectl apply -f kubernetes/django.yml
+          kubectl apply -f kubernetes/postgres.yaml
 
       - name: Test service URLs
         run: |
