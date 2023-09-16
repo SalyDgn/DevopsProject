@@ -98,16 +98,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          install_kubectl: true
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Start minikube
+        uses: medyagh/setup-minikube@master
+      - name: Try the cluster !
+        run: kubectl get pods -A
+     
   
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f kubernetess/postgres.yaml
           kubectl apply -f kubernetess/django.yaml
+
+      - name: Test service URLs
+        run: |
+          minikube service list
+          minikube service django-service --url
           
-        working-directory: ..
         
     
