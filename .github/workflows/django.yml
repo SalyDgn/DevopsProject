@@ -80,7 +80,20 @@ jobs:
             context: .
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/django:latest
-        
 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          install_kubectl: true
+  
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f kubernetess/postgres.yaml
+          kubectl apply -f kubernetess/django.yaml
+          
+        working-directory: ..
         
     
