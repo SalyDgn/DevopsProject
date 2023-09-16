@@ -96,7 +96,7 @@ jobs:
   
 
   deploy:
-    #needs: [ build-ci ]
+    needs: [ build-ci ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -107,13 +107,10 @@ jobs:
       - name: Try the cluster !
         run: kubectl get pods -A
 
-      - name: Check directory
-        run: ls 
-  
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f kubernetes/django.yml
-          kubectl apply -f kubernetes/postgres.yaml
+          kubectl apply -f kubernetes/postgres.yml
 
       - name: Test service URLs
         run: |
