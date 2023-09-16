@@ -41,7 +41,7 @@ perform the following actions:
   -  Install the dependencies
   - Check the code tests, linting and formatting
 - Push the Docker image to docker hub
-- Make the continuous deployment in kubernetes (with minikube)
+- Make the continuous deployment in kubernetes (with minikube since we don't have a kubernetes cluster)
 
 ## 4. Kubernetes deployment
 We set up a local kubernetes cluster with minikube and the kubectl CLI. To deploy, we created app-configmap.yml
