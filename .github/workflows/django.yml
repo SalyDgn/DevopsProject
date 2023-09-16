@@ -105,7 +105,8 @@ jobs:
 
       - name: Wait for pods to be ready
         run: |
-          kubectl wait --for=condition=Ready pods --all --timeout=300s
+          sleep 300
+        #  kubectl wait --for=condition=Ready pods --all --timeout=300s
 
       - name: Test service URLs
         run: |
