@@ -86,7 +86,7 @@ jobs:
   
 
   deploy:
-    needs: [ build-ci ]
+    #needs: [ build-ci ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
