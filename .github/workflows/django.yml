@@ -102,11 +102,9 @@ jobs:
           kubectl apply -f kubernetes/django.yml
           kubectl apply -f kubernetes/postgres.yml
 
-      - name: Pause
-        run: sleep 300
-
-      - name: Get pods
-        run: kubectl get pods
+      - name: Wait for pods to be ready
+        run: |
+          kubectl wait --for=condition=Ready pods --all --timeout=300s
 
       - name: Test service URLs
         run: |
