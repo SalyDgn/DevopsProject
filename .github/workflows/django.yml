@@ -106,6 +106,8 @@ jobs:
         run: |
           minikube service list
           minikube service django-service --url
+          echo "------------------opening the service------------------"
+          curl $(minikube service django-service --url)
           
         
     
