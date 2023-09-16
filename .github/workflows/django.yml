@@ -102,6 +102,9 @@ jobs:
           kubectl apply -f kubernetes/django.yml
           kubectl apply -f kubernetes/postgres.yml
 
+      - name: Get pods
+        run: kubectl get pods
+
       - name: Test service URLs
         run: |
           minikube service list
