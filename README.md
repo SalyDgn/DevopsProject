@@ -1,7 +1,8 @@
 # DevopsProject
 This project is a simple Django application that is deployed using a Continuous
 Integration/Continuous Deployment (CI/CD) pipeline. The pipeline is implemented
-using GitHub Actions, Docker, and Kubernetes.
+using GitHub Actions, Docker, and Kubernetes. This project was made by Fatou Kiné
+Ndiaye, Fama Sarr and Salimata Diagana.
 
 ## 1. Web Application Development
 We developped a Django application with two differents
